@@ -1,0 +1,35 @@
+:root {
+  --red: hsl(0, 100%, 74%); 
+  --green: hsl(154, 59%, 51%);
+  --blue: hsl(248, 32%, 49%);
+  --dark-blue: hsl(249, 10%, 26%); 
+  --grayish-blue: hsl(246, 25%, 77%);
+}
+
+@font-face {
+  font-family: "poppins";
+  src: url("./font/Poppins-Regular.ttf");
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-image: url("./images/bg-intro-mobile.png");
+  background-color: var(--red);
+  font-family: "poppins";
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  align-self: center;
+}
+
+@media screen and (width > 376px) {
+  body {
+    background-color: red;
+  }
+}
