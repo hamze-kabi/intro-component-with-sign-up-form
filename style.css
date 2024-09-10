@@ -22,10 +22,114 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  padding: 5rem 2rem 3rem;
+  height: 100vh;
+  text-align: center;
+  color: whitesmoke;
 }
 
-h1 {
-  align-self: center;
+#try-free-btn {
+  color: whitesmoke;
+  background-color: var(--blue);
+  border: 0;
+  border-radius: 1rem;
+  padding: 1.2rem;
+  box-shadow: 0px 0.5rem 0px 0px rgba(0,0,0,0.25);
+  transition: translate 0.2s, box-shadow 0.2s;
+}
+
+#try-free-btn span {
+  font-weight:bolder;
+}
+
+#try-free-btn:active {
+  translate: 0rem 0.5rem;
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.25);
+
+}
+
+form {
+  background-color: black;
+  padding: 1rem 0 1rem 0;
+  border-radius: 1rem;
+  background-color: white;
+}
+
+form input {
+  width: 85%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.4rem;
+  padding: 0.8rem;
+  /* border: none; */
+  border: 1px solid rgba(0,0,0,0.25);
+  box-shadow: none;
+  transition: box-shadow 0.2s;
+}
+
+form input:focus {
+  box-shadow: 0 0 0 1px var(--red);
+  outline: none;
+}
+
+/* Change the font size of the placeholder text */
+input::placeholder {
+  font-size: 0.9rem; /* Adjust the size as needed */
+  font-weight: bold;
+}
+
+/* For better browser compatibility, include these vendor prefixes */
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+input::-moz-placeholder { /* Firefox 19+ */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+input:-ms-input-placeholder { /* IE 10+ */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+input::-ms-input-placeholder { /* Edge */
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+form button {
+  color: white;
+  background-color: var(--green);
+  border: 0;
+  width: 85%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0.2rem 0rem 0rem hsl(154, 59%, 40%);
+  transition: translate 0.2s, box-shadow 0.2s;
+  margin: 0.5rem 0 1rem 0;
+}
+
+form button:active {
+  translate: 0rem 0.2rem;
+  box-shadow: 0 0 0 0 hsl(154, 59%, 40%);
+}
+
+.form-footer {
+  color: black;
+  font-size: small;
+  width: 85%;
+  text-align: center;
+  margin: auto auto;
+  color: rgba(0,0,0,0.50);
+}
+
+.form-footer a {
+  text-decoration: none;
+}
+
+.form-footer a:link {
+  color: var(--red);
+  font-weight: bold;
 }
 
 @media screen and (width > 376px) {
