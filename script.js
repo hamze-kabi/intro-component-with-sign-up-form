@@ -1,21 +1,25 @@
 "use strict";
 
-function formValidator() {
-  // e.preventDefault();
-  let fname = document.forms["registration-form"]["fname"].value;
-  let lname = document.forms["registration-form"]["lname"].value;
-  let email = document.forms["registration-form"]["email"].value;
+function formValidator(e) {
+  e.preventDefault();
+  let valid = true;
+  const fname = document.forms["registration-form"]["fname"].value;
+  const lname = document.forms["registration-form"]["lname"].value;
+  const email = document.forms["registration-form"]["email"].value;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  let password = document.forms["registration-form"]["password"].value;
+  const password = document.forms["registration-form"]["password"].value;
 
-  if (fname.trim().length == "") {
-    alert(0)
-  } else if (lname.trim() == "") {
-    alert(0)
+  if (fname.trim().length === "") {
+    valid = false;
+  } else if (lname.trim() === "") {
+    valid = false;
   } else if (!emailPattern.test(email)) {
-    alert(222);
+    valid = false;
   } else if (password.length < 8) {
-    alert("password should be at least 8 characters")
+    valid = false;
+  }
+  if (!valid) {
+    document.querySelectorAll("#registration-form input").forEach(input => input.classList.add("not-valid"))
   }
 }
 
