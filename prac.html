@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Validation Form</title>
+    <style>
+        .error-message {
+            display: none; /* Hide the error message by default */
+            color: red; /* Optional: Style the error message */
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <span class="error-message" id="emailError">Please enter a valid email address.</span>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            var emailInput = document.getElementById('email');
+            var emailValue = emailInput.value;
+            var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!emailPattern.test(emailValue)) {
+                // Custom validation logic
+                alert('Please enter a valid email address.');
+                event.preventDefault(); // Prevent form submission
+            }
+        });
+    </script>
+</body>
+</html>

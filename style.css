@@ -73,6 +73,14 @@ form input:focus {
   outline: none;
 }
 
+input:invalid {
+  border: 2px solid red;
+}
+input:invalid:focus {
+  outline: none;
+  box-shadow: 0 0 5px red;
+}
+
 /* Change the font size of the placeholder text */
 input::placeholder {
   font-size: 0.9rem; /* Adjust the size as needed */
