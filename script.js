@@ -1,27 +1,81 @@
 "use strict";
 
-function formValidator(e) {
-  e.preventDefault();
-  let valid = true;
-  const fname = document.forms["registration-form"]["fname"].value;
-  const lname = document.forms["registration-form"]["lname"].value;
-  const email = document.forms["registration-form"]["email"].value;
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const password = document.forms["registration-form"]["password"].value;
+document.getElementById("registration-form").addEventListener("submit",
+  function(event) {
+    // to prevent the page from refreshing
+    event.preventDefault();
+    // checking if entries are valid
+    let valid = true;
+    const fname = document.forms["registration-form"]["fname"].value;
+    const lname = document.forms["registration-form"]["lname"].value;
+    const email = document.forms["registration-form"]["email"].value;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const password = document.forms["registration-form"]["password"].value;
+    if (fname.trim() === "") {
+      valid = false;
+    } else if (lname.trim() === "") {
+      valid = false;
+    } else if (!emailPattern.test(email)) {
+      valid = false;
+    } else if (password.length < 8) {
+      valid = false;
+    }
+    // change in style when entries are invalid
+    if (!valid) {
+      // displaying the error message beneath input fields
+      document.querySelectorAll(".error-message").forEach(errorMessage =>
+        errorMessage.style.display = "block"
+      );
+      // compensating the extra space added by newly display error messages
+      document.querySelectorAll("#registration-form input").forEach(input => {
+        input.style.marginTop = "0px";
+        input.style.marginBottom = "0px";
+      });
 
-  if (fname.trim().length === "") {
-    valid = false;
-  } else if (lname.trim() === "") {
-    valid = false;
-  } else if (!emailPattern.test(email)) {
-    valid = false;
-  } else if (password.length < 8) {
-    valid = false;
+      // changing placeholder of email field
+      let email = document.getElementById("email");
+      email.placeholder = "email@example/com";
+      email.classList.add('email-placeholder-error');
+
+      // adding icon-error.svg
+      // document.querySelectorAll("#registration-form input").forEach(input => {
+      //   input.placeholder += <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
+      //   // input.classList.add("input-error");
+      // });
+
+    }
   }
-  if (!valid) {
-    document.querySelectorAll("#registration-form input").forEach(input => input.classList.add("not-valid"))
-  }
-}
+)
+
+
+
+
+
+
+
+// function formValidator(event) {
+//   event.preventDefault();
+//   let valid = true;
+//   const fname = document.forms["registration-form"]["fname"].value;
+//   const lname = document.forms["registration-form"]["lname"].value;
+//   const email = document.forms["registration-form"]["email"].value;
+//   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//   const password = document.forms["registration-form"]["password"].value;
+
+//   if (fname.trim().length === "") {
+//     valid = false;
+//   } else if (lname.trim() === "") {
+//     valid = false;
+//   } else if (!emailPattern.test(email)) {
+//     valid = false;
+//   } else if (password.length < 8) {
+//     valid = false;
+//   }
+//   if (!valid) {
+//     alert(valid)
+//     document.querySelectorAll("#registration-form input").forEach(input => input.classList.add("error-message"))
+//   }
+// }
 
 // const form = document.getElementById("registration-form");
 // form.addEventListener("submit", formValidator)
