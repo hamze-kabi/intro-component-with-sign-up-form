@@ -26,22 +26,18 @@ document.getElementById("registration-form").addEventListener("submit",
       document.querySelectorAll(".error-message").forEach(errorMessage =>
         errorMessage.style.display = "block"
       );
-      // compensating the extra space added by newly display error messages
+      // compensating the extra space added by newly display error messages and
+      // changing the input border color to red (different from var(--red))
       document.querySelectorAll("#registration-form input").forEach(input => {
         input.style.marginTop = "0px";
         input.style.marginBottom = "0px";
+        input.style.border = "1px solid red";
       });
 
       // changing placeholder of email field
       let email = document.getElementById("email");
       email.placeholder = "email@example/com";
       email.classList.add('email-placeholder-error');
-
-      // adding icon-error.svg
-      // document.querySelectorAll("#registration-form input").forEach(input => {
-      //   input.placeholder += <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#FF7979" cx="12" cy="12" r="12"/><rect fill="#FFF" x="11" y="6" width="2" height="9" rx="1"/><rect fill="#FFF" x="11" y="17" width="2" height="2" rx="1"/></g></svg>
-      //   // input.classList.add("input-error");
-      // });
 
     }
   }
