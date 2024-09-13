@@ -5,45 +5,41 @@ document.getElementById("registration-form").addEventListener("submit",
     // to prevent the page from refreshing
     event.preventDefault();
     // checking if entries are valid
-    let valid = true;
     const fname = document.forms["registration-form"]["fname"].value;
     const lname = document.forms["registration-form"]["lname"].value;
     const email = document.forms["registration-form"]["email"].value;
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const password = document.forms["registration-form"]["password"].value;
+
     if (fname.trim() === "") {
-      valid = false;
-    } else if (lname.trim() === "") {
-      valid = false;
-    } else if (!emailPattern.test(email)) {
-      valid = false;
-    } else if (password.length < 8) {
-      valid = false;
+      showError("fname")
     }
-    // change in style when entries are invalid
-    if (!valid) {
-      // displaying the error message beneath input fields
-      document.querySelectorAll(".error-message").forEach(errorMessage =>
-        errorMessage.style.display = "block"
-      );
-      // compensating the extra space added by newly display error messages and
-      // changing the input border color to red (different from var(--red))
-      document.querySelectorAll("#registration-form input").forEach(input => {
-        input.style.marginTop = "0px";
-        input.style.marginBottom = "0px";
-        input.style.border = "1px solid red";
-      });
-
-      // changing placeholder of email field
-      let email = document.getElementById("email");
-      email.placeholder = "email@example/com";
-      email.classList.add('email-placeholder-error');
-
+    if (lname.trim() === "") {
+      showError("lname")
+    }
+    if (!emailPattern.test(email)) {
+      showError("email")
+    }
+    if (password.length < 8) {
+      showError("password")
     }
   }
 )
 
+function showError(id) {
+  const input = document.getElementById(id)
+  const errorMessage = document.getElementById(`${id}-error`)
 
+  input.style.border = "1px solid red";
+  input.style.marginTop = "0px";
+  input.style.marginBottom = "0px";
+  errorMessage.style.display = "block";
+
+  if (id == "email") {
+    input.placeholder = "email@example/com";
+    input.classList.add('email-placeholder-error');
+  }
+}
 
 
 
